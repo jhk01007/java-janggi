@@ -15,6 +15,7 @@ public record BoardDto(
         List<List<PieceDto>> board
 ) {
     private static final String BACKGROUND_GREEN = "\u001B[42m";
+    private static final String EMPTY = "＊";
 
     public static BoardDto from(Map<Position, Piece> board) {
         List<List<PieceDto>> allPieces = new ArrayList<>();
@@ -53,10 +54,10 @@ public record BoardDto(
             }
 
             if (canMove) {
-                piecesByRow.add(new PieceDto("＊", BACKGROUND_GREEN));
+                piecesByRow.add(new PieceDto(EMPTY, BACKGROUND_GREEN));
                 continue;
             }
-            piecesByRow.add(new PieceDto("＊", ""));
+            piecesByRow.add(new PieceDto(EMPTY, ""));
         }
     }
 
