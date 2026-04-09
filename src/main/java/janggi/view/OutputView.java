@@ -65,7 +65,8 @@ public class OutputView {
         System.out.println();
     }
 
-    private static int convertRow(int row) { // 출력은 0으로, 내부적으로는 10으로 처리되므로
+    // 출력은 0으로, 내부적으로는 10으로 처리되므로
+    private static int convertRow(int row) {
         if(row == 10) {
             return 0;
         }
