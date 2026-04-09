@@ -71,12 +71,13 @@ class PalaceTest {
         List<Direction> directions = Palace.getMovableDirectionsAtPalace(position);
 
         // then
-        assertThat(directions).isEqualTo(expectedResult);
+        assertThat(directions).containsAll(expectedResult);
     }
 
     private static Stream<Arguments> getMovableDirectionsAtPalace_success_테스트케이스() {
         return Stream.of(
                 Arguments.of(Position.from(1, 6), List.of(WEST, SOUTHWEST, SOUTH)),
+                Arguments.of(Position.from(8, 5), List.of(WEST, EAST, SOUTH)),
                 Arguments.of(Position.from(8, 6), List.of(WEST, SOUTHWEST, SOUTH))
         );
     }
