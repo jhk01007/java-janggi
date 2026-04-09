@@ -28,7 +28,7 @@ public class InputView {
             validateRange(ordinal, 1, 4);
             return ordinal;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(
+            throw new ViewException(
                     String.format(INVALID_INPUT_FORMAT_MESSAGE, "상차림 법", position));
         }
     }
@@ -48,7 +48,7 @@ public class InputView {
         String input = scanner.nextLine();
         String[] split = input.split(",");
         if (split.length != 2) {
-            throw new IllegalArgumentException(String.format(INVALID_POSITION_FORMAT_MESSAGE, input));
+            throw new ViewException(String.format(INVALID_POSITION_FORMAT_MESSAGE, input));
         }
         List<Integer> position = convertPositionToInt(split, input);
 
@@ -65,7 +65,7 @@ public class InputView {
                         }
                         return parsed;
                     } catch (NumberFormatException e) {
-                        throw new IllegalArgumentException(String.format(INVALID_POSITION_FORMAT_MESSAGE, input));
+                        throw new ViewException(String.format(INVALID_POSITION_FORMAT_MESSAGE, input));
                     }
                 }).toList();
     }
@@ -78,7 +78,7 @@ public class InputView {
             validateRange(option, 1,2);
             return option;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(
+            throw new ViewException(
                     String.format(INVALID_INPUT_FORMAT_MESSAGE, "게임 옵션", strOption));
         }
     }
@@ -90,7 +90,7 @@ public class InputView {
 
     private static void validateRange(int input, int min, int max) {
         if (input < min || input > max) {
-            throw new IllegalArgumentException(
+            throw new ViewException(
                     String.format(INVALID_INPUT_RANGE_MESSAGE, min, max, input));
         }
     }
@@ -103,7 +103,7 @@ public class InputView {
             validateRange(option, 1, gameRoomDtos.size());
             return gameRoomDtos.get(option - 1).id();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(
+            throw new ViewException(
                     String.format(INVALID_INPUT_FORMAT_MESSAGE, "게임번호", strGameNum));
         }
     }

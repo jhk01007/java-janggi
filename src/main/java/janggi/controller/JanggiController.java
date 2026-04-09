@@ -10,6 +10,7 @@ import janggi.domain.dynasty.Dynasty;
 import janggi.domain.game.Game;
 import janggi.domain.game.RoomName;
 import janggi.domain.position.Position;
+import janggi.view.ViewException;
 import janggi.view.dto.BoardDto;
 import janggi.view.dto.PositionDto;
 import janggi.view.mapper.HorseElephantPositionMapper;
@@ -151,7 +152,7 @@ public class JanggiController {
         while (true) {
             try {
                 return readOperation.get();
-            } catch (DomainException | IllegalArgumentException e) {
+            } catch (DomainException | ViewException e) {
                 outputView.printErrorMessage(e.getMessage());
             } catch (Exception e) {
                 outputView.printErrorMessage("알 수 없는 에러가 발생했습니다.");

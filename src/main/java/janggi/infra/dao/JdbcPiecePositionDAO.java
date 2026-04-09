@@ -8,6 +8,7 @@ import janggi.infra.entity.GameEntity;
 import janggi.infra.entity.PiecePositionEntity;
 import janggi.infra.util.ConnectionProvider;
 import janggi.infra.util.DataSourceUtils;
+import janggi.view.ViewException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class JdbcPiecePositionDAO implements PiecePositionDAO {
     @Override
     public List<Long> saveAll(List<PiecePositionEntity> piecePositionEntities) {
         if (piecePositionEntities == null || piecePositionEntities.isEmpty()) {
-            throw new IllegalArgumentException("저장할 데이터가 존재하지 않습니다.");
+            throw new ViewException("저장할 데이터가 존재하지 않습니다.");
         }
 
         Connection con = connectionProvider.getConnection();
